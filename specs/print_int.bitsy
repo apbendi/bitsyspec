@@ -1,0 +1,6 @@
+{Expected Output:
+116
+}
+BEGIN
+  PRINT 116
+END

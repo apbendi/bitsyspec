@@ -1,7 +1,7 @@
 import Foundation
 
 struct Shell {
-    func exec(cmd cmdname: String) -> String {
+    static func exec(cmd cmdname: String) -> String {
         var outstr = ""
         let task = NSTask()
         task.launchPath = "/bin/sh"
