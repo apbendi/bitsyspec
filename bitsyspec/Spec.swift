@@ -4,27 +4,41 @@ struct Spec {
     let specPath: String
     let expected: String
     let description: String
+    let warning: String?
 
-    init?(filePath: String) {
+    init(filePath: String) {
         guard let regExp = try? NSRegularExpression(pattern: "^.+\\.bitsy$", options: .CaseInsensitive),
             _ = regExp.firstMatchInString(filePath, options: [], range: NSMakeRange(0, filePath.characters.count)) else {
 
-            print("Not a bitsy file: \(filePath)")
-            return nil
+            self.warning = "Not a bitsy file: \(filePath)"
+            self.specPath = ""
+            self.expected = ""
+            self.description = ""
+
+            return
         }
 
         guard let bitsyCode = try? NSString(contentsOfFile: filePath, encoding: NSUTF8StringEncoding) as String,
             (description, expected) = Spec.extractExpected(fromCode: bitsyCode) else {
-                print("Could not determine expected output for spec at: \(filePath)")
-                return nil
+                self.warning = "Malformed spec definition comment in: \(filePath)"
+                self.specPath = ""
+                self.expected = ""
+                self.description = ""
+
+                return
         }
 
         self.specPath = filePath
         self.expected = expected
         self.description = description
+        self.warning = nil
     }
 
     func run(withBitsy bitsyBin: String) -> String {
+        if let warning = warning {
+            return "⚠️  \(warning)"
+        }
+
         let output = Shell.exec(cmd: "\(bitsyBin) \(specPath)")
 
         if output == expected {

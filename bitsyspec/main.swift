@@ -2,10 +2,10 @@ import Foundation
 
 func main(args args:[String]) {
     let (bitsyBin, specPath) = process(args: args)
-    if let spec = Spec(filePath: specPath) {
-        let result = spec.run(withBitsy: bitsyBin)
-        print(result)
-    }
+
+    let spec = Spec(filePath: specPath)
+    let result = spec.run(withBitsy: bitsyBin)
+    print(result)
 }
 
 func process(args args:[String]) -> (String, String) {
