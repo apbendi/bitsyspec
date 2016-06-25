@@ -1,0 +1,8 @@
+{ Description: "Print multiple integer literals"
+116
+827
+}
+BEGIN
+  PRINT 116
+  PRINT 827
+END

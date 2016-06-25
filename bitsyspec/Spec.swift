@@ -18,14 +18,22 @@ struct Spec {
             return
         }
 
-        guard let bitsyCode = try? NSString(contentsOfFile: filePath, encoding: NSUTF8StringEncoding) as String,
-            (description, expected) = Spec.extractExpected(fromCode: bitsyCode) else {
-                self.warning = "Malformed spec definition comment in: \(filePath)"
-                self.specPath = ""
-                self.expected = ""
-                self.description = ""
+        guard let bitsyCode = try? NSString(contentsOfFile: filePath, encoding: NSUTF8StringEncoding) as String else {
+            self.warning = "File not found: \(filePath)"
+            self.specPath = ""
+            self.expected = ""
+            self.description = ""
 
-                return
+            return
+        }
+
+        guard let (description, expected) = Spec.extractExpected(fromCode: bitsyCode) else {
+            self.warning = "Malformed spec definition comment in: \(filePath)"
+            self.specPath = ""
+            self.expected = ""
+            self.description = ""
+
+            return
         }
 
         self.specPath = filePath

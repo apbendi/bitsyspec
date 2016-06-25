@@ -3,9 +3,22 @@ import Foundation
 func main(args args:[String]) {
     let (bitsyBin, specPath) = process(args: args)
 
-    let spec = Spec(filePath: specPath)
-    let result = spec.run(withBitsy: bitsyBin)
-    print(result)
+    guard let directory = NSFileManager.defaultManager().enumeratorAtPath(specPath) else {
+        print("Directory not found: \(specPath)")
+        exit(-1)
+    }
+
+    directory.forEach { element in
+        guard let fileName = element as? String where fileName.hasSuffix("bitsy") else {
+            return
+        }
+
+        let fullPath = specPath.hasSuffix("/") ? specPath + fileName : specPath + "/" + fileName
+        let spec = Spec(filePath: fullPath)
+        let result = spec.run(withBitsy: bitsyBin)
+
+        print(result)
+    }
 }
 
 func process(args args:[String]) -> (String, String) {
