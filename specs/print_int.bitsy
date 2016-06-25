@@ -1,4 +1,4 @@
-{Expected Output:
+{ Description: "Print an integer literal"
 116
 }
 BEGIN
