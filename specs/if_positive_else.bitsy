@@ -1,0 +1,31 @@
+{ Description: "Branch to ELSE on positive values with IFP"
+116
+827
+1130
+115
+}
+BEGIN
+  IFP 0
+    PRINT 1
+  ELSE
+    PRINT 116
+  END
+
+  IFP 1
+    PRINT 827
+  ELSE
+    PRINT 2
+  END
+
+  IFP x
+    PRINT 3
+  ELSE
+    PRINT 1130
+  END
+
+  IFP y+1
+    PRINT 115
+  ELSE
+    PRINT 4
+  END
+END

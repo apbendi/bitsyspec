@@ -1,0 +1,28 @@
+{ Description: "Handle nested branching with IFP...ELSE"
+1
+2
+3
+4
+}
+BEGIN
+  IFP 1
+    PRINT 1
+    IFP -1
+      PRINT -2
+      IFP 2
+        PRINT -2
+      ELSE
+        PRINT -3
+      END
+    ELSE
+      PRINT 2
+      IFP 2
+        PRINT 3
+      END
+    END
+  ELSE
+    PRINT -1
+  END
+
+  PRINT 4
+END
