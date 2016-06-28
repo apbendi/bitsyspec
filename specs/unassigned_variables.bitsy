@@ -1,0 +1,14 @@
+{ Description: "Allow use of unassigned variable identifiers"
+0
+1
+0
+1
+0
+}
+BEGIN
+  PRINT x
+  PRINT y + 1
+  PRINT z * 100
+  PRINT x + y + z*100 + 1
+  PRINT longVariableName
+END

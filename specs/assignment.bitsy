@@ -1,0 +1,19 @@
+{ Description: "Allow for variable assignment and use"
+10
+10
+100
+120
+10000
+}
+BEGIN
+  x=10
+  y = x
+  z= x * y + 10 - 2*5
+  sum =x + y + z
+
+  PRINT x
+  PRINT y
+  PRINT z
+  PRINT sum
+  PRINT x*y*z
+END
