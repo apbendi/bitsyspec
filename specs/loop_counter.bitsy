@@ -1,0 +1,22 @@
+{ Description: "Break from LOOP based on a counter"
+5
+4
+3
+2
+1
+615
+}
+BEGIN
+  x = 5
+
+  LOOP
+    IFP 1 - x
+      BREAK
+    END
+
+    PRINT x
+    x = x - 1
+  END
+
+  PRINT 615
+END

@@ -1,0 +1,20 @@
+{ Description: "Break from a LOOP construct"
+0
+2
+3
+}
+BEGIN
+  PRINT 0
+
+  LOOP
+    BREAK
+    PRINT 1
+  END
+
+  LOOP
+    PRINT 2
+    BREAK
+  END
+
+  PRINT 3
+END

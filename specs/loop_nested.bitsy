@@ -1,0 +1,35 @@
+{ Description: "Allow for nested LOOP constructs"
+4
+3
+2
+1
+3
+2
+1
+2
+1
+1
+0
+}
+BEGIN
+  x = 4
+  LOOP
+    y = x
+    LOOP
+      IFP 2 - y
+        BREAK
+      END
+
+      PRINT y
+      y = y - 1
+    END
+
+    PRINT y
+
+    IFP 1 - x
+      BREAK
+    ELSE
+      x = x - 1
+    END
+  END
+END
