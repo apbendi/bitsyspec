@@ -1,0 +1,18 @@
+{ Description: "Handle precedence of mathematical operators"
+3
+3
+12
+6
+6
+1
+13
+}
+BEGIN
+  PRINT 2 * 1+1
+  PRINT 1 + 1*2
+  PRINT 3+ 3 *3
+  PRINT 10 - 2*2
+  PRINT 10/2 + 1
+  PRINT 10 % 2 * 4 + 1
+  PRINT 13 / 2 + 2*3 + 11%2
+END

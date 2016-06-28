@@ -1,0 +1,18 @@
+{ Description: "Handle precedence with parentheses"
+6
+8
+67
+152
+16
+827
+7
+}
+BEGIN
+  PRINT 2 * (2 + 1)
+  PRINT ((((((2+3*2))))))
+  PRINT 2* (3+5*(2+5-1)) + (10 - 3*(2+1))
+  PRINT 1*(2+2*(3+3*(4+4*(5))))
+  PRINT (      4)*(    2+ 2 )
+  PRINT (827)
+  PRINT 2*(4+5) / 10*7
+END

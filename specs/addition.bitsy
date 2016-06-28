@@ -1,0 +1,6 @@
+{ Description: "Add Integer literals"
+4
+}
+BEGIN
+  PRINT 2+1 + 1
+END

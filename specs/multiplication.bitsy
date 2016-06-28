@@ -1,0 +1,6 @@
+{ Description: "Multiply several Integer literals"
+16
+}
+BEGIN
+  PRINT 2 *2* 4
+END

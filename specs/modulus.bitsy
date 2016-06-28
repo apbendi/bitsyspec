@@ -1,0 +1,8 @@
+{ Description: "Calculate modulus between Integer literal"
+1
+0
+}
+BEGIN
+  PRINT 14 % 10%3
+  PRINT 10 % 2
+END

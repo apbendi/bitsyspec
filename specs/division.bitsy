@@ -1,0 +1,6 @@
+{ Description: "Divide Integer literals"
+2
+}
+BEGIN
+  PRINT 10/2 /2
+END

@@ -1,0 +1,6 @@
+{ Description: "Subtract Integer literals"
+7
+}
+BEGIN
+  PRINT 10 - 2-1
+END
