@@ -3,6 +3,14 @@ import Foundation
 func main(args args:[String]) {
     let (bitsyBin, specPath) = process(args: args)
 
+    if specPath.hasSuffix(".bitsy") {
+        let spec = Spec(filePath: specPath)
+        let result = spec.run(withBitsy: bitsyBin)
+
+        print(result)
+        return
+    }
+
     guard let directory = NSFileManager.defaultManager().enumeratorAtPath(specPath) else {
         print("Directory not found: \(specPath)")
         exit(-1)
