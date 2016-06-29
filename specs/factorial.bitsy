@@ -1,0 +1,29 @@
+{ Description: "Calculate the factorial of a number"
+120
+}
+BEGIN
+  factorialOf = 5
+
+  IFP factorialOf
+    x = factorialOf {
+      This comment
+      spans multiple lines! ()__()
+    }
+    y = 1
+
+    LOOP
+      IFP x
+        y = y * x
+        x = x - 1
+      ELSE
+        BREAK
+      END
+    END
+
+    PRINT y
+  ELSE
+    PRINT -1 {Typical comment}
+  END
+END
+
+{ A comment at the end }

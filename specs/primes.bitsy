@@ -1,0 +1,48 @@
+{ Description: "Calculate all the primes up to 23"
+23
+19
+17
+13
+11
+7
+5
+3
+2
+1
+}
+BEGIN
+  primeCalc = 23
+  LOOP
+    IFP primeCalc
+      primeTest = primeCalc - 1
+      modMulti = 1
+
+      { Multiply the modulus of all numbers less than this one together }
+      LOOP
+        IFP primeTest - 1
+          thisDiv = primeCalc % primeTest
+          modMulti = modMulti * thisDiv
+
+          IFP modMulti { Reset mod multi to it doesn't get too big}
+            modMulti = 1
+          ELSE { If 0, we already know this isn't a prime}
+            BREAK
+          END
+
+          primeTest = primeTest - 1
+        ELSE
+          BREAK
+        END
+      END
+
+      { This must be a prime number }
+      IFP modMulti
+        PRINT primeCalc
+      END
+
+      primeCalc = primeCalc - 1
+    ELSE
+      BREAK
+    END
+  END
+END
