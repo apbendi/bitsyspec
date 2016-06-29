@@ -1,0 +1,30 @@
+{ Description: "Calculate the first 10 numbers in the fibonacci sequence"
+0
+1
+1
+2
+3
+5
+8
+13
+21
+34
+}
+BEGIN
+  fibCount = 10
+  thisFib = 1
+
+  LOOP
+    PRINT lastFib
+    fibCount = fibCount - 1
+
+    IFP fibCount
+      nextFib = thisFib + lastFib
+
+      lastFib = thisFib
+      thisFib = nextFib
+    ELSE
+      BREAK
+    END
+  END
+END
