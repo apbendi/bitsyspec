@@ -1,0 +1,31 @@
+{ Description: "Branch to ELSE on non-zero values with IFZ"
+116
+827
+1130
+115
+}
+BEGIN
+  IFZ 0
+    PRINT 116
+  ELSE
+    PRINT 1
+  END
+
+  IFZ 1
+    PRINT 2
+  ELSE
+    PRINT 827
+  END
+
+  IFZ x
+    PRINT 1130
+  ELSE
+    PRINT 3
+  END
+
+  IFZ y+1
+    PRINT 4
+  ELSE
+    PRINT 115
+  END
+END

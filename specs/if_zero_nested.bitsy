@@ -1,0 +1,25 @@
+{ Description: "Handle nested branching with IFZ"
+1
+2
+3
+4
+5
+6
+}
+BEGIN
+  PRINT 1
+  IFZ 0
+    PRINT 2
+    IFZ 2 - (1 + 1)
+      PRINT 3
+      IFZ x
+        PRINT 4
+        IFZ y + x - 1 + 1
+          PRINT 5
+        END
+      END
+    END
+  END
+
+  PRINT 6
+END
