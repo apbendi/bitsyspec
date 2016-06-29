@@ -1,0 +1,30 @@
+{ Description: "Branch on negative values with IFN"
+116
+1130
+24
+}
+BEGIN
+  IFN -1
+    PRINT 116
+  END
+
+  IFN 0
+    PRINT 827
+  END
+
+  IFN 12
+    PRINT 1000
+  END
+
+  IFN -10 + 2
+    PRINT 1130
+  END
+
+  IFN x
+    PRINT 365
+  END
+
+  IFN x - 1
+    PRINT 24
+  END
+END

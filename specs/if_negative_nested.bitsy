@@ -1,0 +1,25 @@
+{ Description: "Handle nested branching with IFN"
+-1
+-2
+-3
+-4
+-5
+-6
+}
+BEGIN
+  PRINT -1
+  IFN -1
+    PRINT -2
+    IFN -2
+      PRINT -3
+      IFN -3
+        PRINT -4
+        IFN -4
+          PRINT -5
+        END
+      END
+    END
+  END
+
+  PRINT -6
+END

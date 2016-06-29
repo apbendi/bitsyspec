@@ -1,0 +1,31 @@
+{ Description: "Branch to ELSE on non-negative values with IFN"
+116
+827
+1130
+115
+}
+BEGIN
+  IFN 0
+    PRINT 1
+  ELSE
+    PRINT 116
+  END
+
+  IFN -1
+    PRINT 827
+  ELSE
+    PRINT 2
+  END
+
+  IFN x
+    PRINT 3
+  ELSE
+    PRINT 1130
+  END
+
+  IFN y - 1
+    PRINT 115
+  ELSE
+    PRINT 4
+  END
+END
