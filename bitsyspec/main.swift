@@ -19,14 +19,16 @@ func main(arguments args:[String]) {
 func process(arguments args:[String]) -> (bitsyBin: String, specPath: String) {
     guard args.count == 3 else {
         usage()
-        exit(EX_USAGE)
     }
 
     return (args[1], args[2])
 }
 
+@noreturn
 func usage() {
-    print("Usage:\n\t$ runbitsy $PATH_TO_BITSY_BIN $SPEC")
+    print("usage: bitsyspec bitsy_path spec_path")
+    print("       run spec(s) at spec_path using bitsy implementation at bitsy_path")
+    exit(EX_USAGE)
 }
 
 func directory(atPath path:String) -> NSDirectoryEnumerator? {
