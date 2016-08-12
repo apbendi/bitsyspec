@@ -1,58 +1,46 @@
 import Foundation
 
+private typealias ValidSpec = (path: String, description: String, expected: String)
+
+private enum SpecData {
+    case warning(String)
+    case valid(ValidSpec)
+}
+
 struct Spec {
-    let specPath: String
-    let expected: String
-    let description: String
-    let warning: String?
+    private let metadata: SpecData
 
     init(filePath: String) {
-        guard let regExp = try? NSRegularExpression(pattern: "^.+\\.bitsy$", options: .CaseInsensitive),
-            _ = regExp.firstMatchInString(filePath, options: [], range: NSMakeRange(0, filePath.characters.count)) else {
-
-            self.warning = "Not a bitsy file: \(filePath)"
-            self.specPath = ""
-            self.expected = ""
-            self.description = ""
-
+        guard filePath.isValidBitsyPath else {
+            metadata = .warning("Not a bitsy file: \(filePath)")
             return
         }
 
-        guard let bitsyCode = try? NSString(contentsOfFile: filePath, encoding: NSUTF8StringEncoding) as String else {
-            self.warning = "File not found: \(filePath)"
-            self.specPath = ""
-            self.expected = ""
-            self.description = ""
-
+        guard let bitsyCode = contents(ofFile: filePath) else {
+            metadata = .warning("File not found: \(filePath)")
             return
         }
 
         guard let (description, expected) = Spec.extractExpected(fromCode: bitsyCode) else {
-            self.warning = "Malformed spec definition comment in: \(filePath)"
-            self.specPath = ""
-            self.expected = ""
-            self.description = ""
-
+            metadata = .warning("Malformed spec definition comment in: \(filePath)")
             return
         }
 
-        self.specPath = filePath
-        self.expected = expected
-        self.description = description
-        self.warning = nil
+        metadata = .valid(path: filePath, description: description, expected: expected)
     }
 
     func run(withBitsy bitsyBin: String) -> String {
-        if let warning = warning {
-            return "⚠️  \(warning)"
-        }
+        switch metadata {
+        case .warning(let message):
+            return "⚠️  \(message)"
+        case .valid(let path, let description, let expected):
+            let output = Shell.exec(cmd: "\(bitsyBin) \(path)")
 
-        let output = Shell.exec(cmd: "\(bitsyBin) \(specPath)")
+            if output != expected {
+                return "❌  \(description) -> Expected '\(expected)' got '\(output)'".replacing("\n", with: "\\n")
+            }
 
-        if output == expected {
             return "✅  \(description)"
-        } else {
-            return "❌  \(description) -> Expected '\(expected)' got '\(output)'".replacing(char: "\n", with: "\\n")
         }
     }
 }
@@ -97,7 +85,17 @@ private extension Spec {
 }
 
 private extension String {
-    func replacing(char char: Character, with replacement: String) -> String {
+
+    var isValidBitsyPath: Bool {
+        guard let regExp = try? NSRegularExpression(pattern: "^.+\\.bitsy$", options: .CaseInsensitive),
+            _ = regExp.firstMatchInString(self, options: [], range: NSMakeRange(0, characters.count)) else {
+            return false
+        }
+
+        return true
+    }
+
+    func replacing(char: Character, with replacement: String) -> String {
         var index = self.startIndex
         var new = ""
 
@@ -113,4 +111,8 @@ private extension String {
 
         return new
     }
+}
+
+private func contents(ofFile filePath: String) -> String? {
+    return try? NSString(contentsOfFile: filePath, encoding: NSUTF8StringEncoding) as String
 }
