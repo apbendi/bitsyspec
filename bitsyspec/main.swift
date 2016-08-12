@@ -1,38 +1,25 @@
 import Foundation
 
-func main(args args:[String]) {
-    let (bitsyBin, specPath) = process(args: args)
+func main(arguments args:[String]) {
+    let (bitsyBin, specPath) = process(arguments: args)
 
-    if specPath.hasSuffix(".bitsy") {
-        let spec = Spec(filePath: specPath)
-        let result = spec.run(withBitsy: bitsyBin)
+    let allSpecs = specs(atPath: specPath)
 
-        print(result)
-        return
+    guard allSpecs.count > 0 else {
+        print("No specs found at \(specPath)")
+        exit(EX_DATAERR)
     }
 
-    guard let directory = NSFileManager.defaultManager().enumeratorAtPath(specPath) else {
-        print("Directory not found: \(specPath)")
-        exit(-1)
-    }
-
-    directory.forEach { element in
-        guard let fileName = element as? String where fileName.hasSuffix("bitsy") else {
-            return
-        }
-
-        let fullPath = specPath.hasSuffix("/") ? specPath + fileName : specPath + "/" + fileName
-        let spec = Spec(filePath: fullPath)
+    allSpecs.forEach { spec in
         let result = spec.run(withBitsy: bitsyBin)
-
         print(result)
     }
 }
 
-func process(args args:[String]) -> (String, String) {
+func process(arguments args:[String]) -> (bitsyBin: String, specPath: String) {
     guard args.count == 3 else {
         usage()
-        exit(-1)
+        exit(EX_USAGE)
     }
 
     return (args[1], args[2])
@@ -42,4 +29,33 @@ func usage() {
     print("Usage:\n\t$ runbitsy $PATH_TO_BITSY_BIN $SPEC")
 }
 
-main(args: Process.arguments)
+func directory(atPath path:String) -> NSDirectoryEnumerator? {
+    return NSFileManager.defaultManager().enumeratorAtPath(path)
+}
+
+func specs(atPath path:String) -> [Spec] {
+    if path.isValidBitsyPath {
+        return [Spec(filePath: path)]
+    }
+
+
+    return specs(inDirectory: path)
+}
+
+func specs(inDirectory dirPath:String) -> [Spec] {
+    guard let directory = directory(atPath: dirPath) else {
+        print("Directory not found: \(dirPath)")
+        exit(EX_DATAERR)
+    }
+
+    return directory.flatMap { element in
+        guard let fileName = element as? String where fileName.isValidBitsyPath else {
+            return nil
+        }
+
+        let fullPath = dirPath.hasSuffix("/") ? dirPath + fileName : dirPath + "/" + fileName
+        return Spec(filePath: fullPath)
+    }
+}
+
+main(arguments: Process.arguments)

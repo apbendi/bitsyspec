@@ -84,17 +84,18 @@ private extension Spec {
     }
 }
 
-private extension String {
-
+extension String {
     var isValidBitsyPath: Bool {
         guard let regExp = try? NSRegularExpression(pattern: "^.+\\.bitsy$", options: .CaseInsensitive),
             _ = regExp.firstMatchInString(self, options: [], range: NSMakeRange(0, characters.count)) else {
-            return false
+                return false
         }
 
         return true
     }
+}
 
+private extension String {
     func replacing(char: Character, with replacement: String) -> String {
         var index = self.startIndex
         var new = ""
