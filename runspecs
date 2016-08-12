@@ -1,0 +1,22 @@
+#!/bin/sh
+
+SPECSUB=specs
+BINSUB=bin
+BUILDCMD=./build.sh
+
+if [ "$#" -ne 1 ]; then
+  echo "usage: $0 bitsy_path" >&2
+  echo "       run all specs using bitsy implementation at bitsy_path" >&2
+  exit 1
+fi
+
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
+if [ ! -d "$BINSUB" ]; then
+  $BUILDCMD
+fi
+
+SPECPATH=$SCRIPTPATH/$SPECPATH
+BINPATH=$SCRIPTPATH/$BINSUB/bitsyspec
+
+$BINPATH $1 $SPECPATH
