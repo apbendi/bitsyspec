@@ -1,17 +1,17 @@
 # Bitsy
 
-Bitsy is a programming language designed to be easy to implement.
 Bitsy aims to be the best language to target when building your
-first compiler or interpreter.
+first compiler or interpreter. It is a resource for programmers learning about
+language implementation.
 
 A secondary goal of Bitsy is to look familiar to most imperative
 programmers. In contrast to other languages often used to teach language implementation,
 such as [BF](https://en.wikipedia.org/wiki/Brainfuck) or
 [Lisp](https://en.wikipedia.org/wiki/Lisp_(programming_language)),
-Bitsy is comparable at first glance to "typical" programming
+Bitsy is comparable, at first glance, to "typical" programming
 languages.
 
-A non-goal of Bitsy is to be useful in itself as a language. It is only just
+A non-goal of Bitsy is to be useful itself as a language. It is only just
 possible to write a few useful programs in Bitsy, such as calculating
 factorials or prime numbers.  Bitsy qua Bitsy *might* be useful as teaching tool
 if used as an early introduction to programming for new students, such as
