@@ -121,7 +121,8 @@ behavior or ambiguity exists in the language, the behavior of the current
 canonical implementation ([bitsy-swift](https://github.com/apbendi/bitsy-swift))
 should be assumed. Please open an issue to report these!
 
-Want to help us get closer to a fully defined and spec'd language? Consider...
+Want to help us get closer to a fully defined and spec'd language? Consider
+[Contributing](#contributing)
 
 ## Resources
 
@@ -146,13 +147,13 @@ places to start.
    with Alex Aiken. A more advanced resource for learning some theory and going
    deeper.
 
- ## Implementations
+## Implementations
 
- The first-and-canonical implementation of Bitsy is
- [bitsy-swift](https://github.com/apbendi/bitsy-swift), a compiler written in
- Swift.
+The first-and-canonical implementation of Bitsy is
+[bitsy-swift](https://github.com/apbendi/bitsy-swift), a compiler written in
+Swift.
 
- Open a pull request to add your implementation to the list!
+Open a pull request to add your implementation to the list!
 
 ## Contributing
 
