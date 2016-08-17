@@ -45,6 +45,9 @@ BEGIN
 END
 ```
 
+The BitsySwift repository has some
+[additional samples](https://github.com/apbendi/bitsy-swift/tree/master/samples).
+
 ## Bitsy Language Definition
 
 While the hope of this repo is to codify the definition of Bitsy in a series of
@@ -112,8 +115,6 @@ before first being assigned its value is `0`.
 
 Variable assignment is performed using the `=` infix operator. The variable name
 to the left of the operator is assigned to the evaluated expression on the right.
-Variables may be assigned the values of other variables. Arithmetic expressions may
-include variables as terms.
 
 ### I/O
 
@@ -127,7 +128,8 @@ THE `READ` keyword is used to take input from the user. It is followed by whites
 and a variable name. When a Bitsy program evaluates a `READ` command, it pauses
 to take input from the user and reads that input as an integer value. The value
 received is loaded into the variable specified. Any value previously stored in
-that variable is overwritten.
+that variable is overwritten. Input that contains any non-digit character ('0'-'9')
+is interpreted as 0.
 
 ```bitsy
 { Print 10x the user's input }
@@ -142,13 +144,12 @@ END
 Despite having no boolean data type, Bitsy has three conditional statements:
 `IFP`, `IFZ`, and `IFN`. Each statement is followed by an expression, an
 optional `ELSE`, and a closing `END`. The statement
-proceeds based the evaluation of the expression provided after the first
-component of the conditional.
+proceeds based the evaluation of the expression.
 
-An `IFP` statement evaluates the conditional block
-if the expression evaluates to a positive value. An `IFZ` statement evaluates the
+An `IFP` statement executes the conditional block
+if the expression evaluates to a positive value. An `IFZ` statement executes the
 conditional block if the expression evaluates to exactly zero. An `IFN` statement
-evaluates the conditional block if the expression evaluates to a negative value.
+executes the conditional block if the expression evaluates to a negative value.
 
 ### Loops
 

@@ -5,7 +5,8 @@ first compiler or interpreter. It is a resource for programmers learning about
 language implementation.
 
  * Read more about the Bitsy language: [BITSY.md](BITSY.md)
- * See the canonical implementation: [bitsy-swift](https://github.com/apbendi/bitsy-swift)
+ * See the canonical implementation: [BitsySwift](https://github.com/apbendi/bitsy-swift)
+ * Read more about why Bitsy exists: [Introducing Bitsy](http://www.scopelift.co/blog/introducing-bitsy-the-first-language-youll-implement-yourself)
 
 # BitsySpec
 
@@ -51,7 +52,7 @@ cd bitsyspec
 
 ## Usage
 
-The `runspecs` scripts can be used to conveniently run all [specs included
+The `runspecs` script can be used to conveniently run all [specs included
 in this repo](specs) with a provided implementation of Bitsy.
 
 ```bash
@@ -100,8 +101,15 @@ success or failure. The comment must be in the
 [correct format](specs/fibonacci.bitsy#L1).
 
 *Note: `bitsyspec` assumes your implementation takes a `.bitsy` file as
-its only argument, which it can immediately run. Depending on the details of your
-implementation you may have to wrap it in a shell script to achieve this. See
+its only argument, which it can immediately run. For example:
+
+```bash
+my-bitsy print42.bitsy
+42
+```
+
+Depending on the details of your
+implementation, you may have to wrap it in a shell script to achieve this. See
 `bitsy-swift`'s
 [runbitsy](https://github.com/apbendi/bitsy-swift/blob/master/runbitsy)
 for an example.*
@@ -109,8 +117,8 @@ for an example.*
 ## Language Specification
 
 This repo contains a collection of specs
-in the `/specs` [directory](specs). The goal is to for the specs contained
-there to fully define Bitsy, such that:
+in the `/specs` [directory](specs). The goal that the specs contained
+there fully define Bitsy, such that:
 
  * An implementation passing all specs is considered a valid Bitsy implementation
  * A change to the language would be expressed by a change to or addition of
@@ -130,7 +138,7 @@ While Bitsy has been created partially in response to a perceived lack of approa
 resources for learning language implementation, there are still some good
 places to start.
 
- * [Let's Build a Compiler](http://www.compilers.iecc.com/crenshaw/); this awesome
+ * [Let's Build a Compiler](http://www.compilers.iecc.com/crenshaw/); this
    paper from the late 80's (!) is an excellent introduction to compilation.
    The biggest downside is the use of
    [Pascal](https://en.wikipedia.org/wiki/Pascal_%28programming_language%29)
@@ -139,18 +147,24 @@ places to start.
    [partially translate](https://github.com/apbendi/LetsBuildACompilerInSwift)
    his code to Swift.
  * [The Super Tiny Compiler](https://github.com/thejameskyle/the-super-tiny-compiler)
-   is a great resource by James Kyle- a tiny, extremely well commented compiler
+   is a great resource by James Kyle- a minimal, extremely well commented compiler
    written in JavaScript. Be sure to also checkout the associated
    [conference talk](https://www.youtube.com/watch?v=Tar4WgAfMr4)
  * [A Nanopass Framework for Compiler Education (PDF)](http://www.cs.indiana.edu/~dyb/pubs/nano-jfp.pdf)
  * [Stanford Compiler Course](https://www.youtube.com/watch?v=sm0QQO-WZlM&list=PLFB9EC7B8FE963EB8)
-   with Alex Aiken. A more advanced resource for learning some theory and going
+   with Alex Aiken; a more advanced resource for learning some theory and going
    deeper.
+
+I'll be speaking about creating Bitsy and implementing it in Swift at
+[360iDev](http://360idev.com/sessions/300-compilers-arent-magic-lets-build-one-swift/)
+and
+[Indie DevStock](http://indiedevstock.com/speakers/ben-difrancesco/).
+If you're attending either, be sure to say hello!
 
 ## Implementations
 
 The first-and-canonical implementation of Bitsy is
-[bitsy-swift](https://github.com/apbendi/bitsy-swift), a compiler written in
+[BitsySwift](https://github.com/apbendi/bitsy-swift), a compiler written in
 Swift.
 
 Open a pull request to add your implementation to the list!
