@@ -1,8 +1,8 @@
 # Bitsy
 
-Bitsy aims to be the best language to target when building your
+Bitsy aims to be the best language to implement when writing your
 first compiler or interpreter. It is a resource for programmers learning about
-language implementation.
+language design.
 
 A secondary goal of Bitsy is to look familiar to most imperative
 programmers. In contrast to other languages often used to teach language implementation,

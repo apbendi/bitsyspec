@@ -1,8 +1,8 @@
 # Bitsy
 
-[Bitsy](BITSY.md) aims to be the best language to target when building your
+[Bitsy](BITSY.md) aims to be the best language to implement when writing your
 first compiler or interpreter. It is a resource for programmers learning about
-language implementation.
+language design.
 
  * Read more about the Bitsy language: [BITSY.md](BITSY.md)
  * See the canonical implementation: [BitsySwift](https://github.com/apbendi/bitsy-swift)
