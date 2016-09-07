@@ -1,0 +1,37 @@
+<program> ::= BEGIN <block> END
+
+<block> ::= { <if-statement> | <loop> | <break> | <print> | <read> | <assignment> }
+
+<if-statement> ::=  <if-keyword> <expression> <block> [ ELSE <block> ] END
+
+<if-keyword> ::= IFZ | IFP | IFN
+
+<loop> ::= LOOP <block> END
+
+<break> ::= BREAK
+
+<print> ::= PRINT <expression>
+
+<read> ::= READ <var-name>
+
+<assignment> ::= <var-nam> "=" <expression>
+
+<expression> ::= <term> { <add-op> <term> }
+
+<term> ::= <signed-factor> { <mul-op> <factor> }
+
+<signed-factor> ::= [ add-op ] <factor>
+
+<factor> ::= <integer> | <var-name> | "(" <expression> ")"
+
+<var-name> ::= <ident-char> { <ident-char> }
+
+<integer> ::= <digit> { <digit> }
+
+<add-op> ::= "+" | "-"
+
+<mul-op> ::= "*" | "/" | "%"
+
+<ident-char> ::= "_" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" | "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
+
+<digit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" 

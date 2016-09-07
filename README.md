@@ -7,6 +7,7 @@ language design.
  * Read more about the Bitsy language: [BITSY.md](BITSY.md)
  * See the canonical implementation: [BitsySwift](https://github.com/apbendi/bitsy-swift)
  * Read more about why Bitsy exists: [Introducing Bitsy](http://www.scopelift.co/blog/introducing-bitsy-the-first-language-youll-implement-yourself)
+ * See the formal language grammar in [BNF](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form) notation: [GRAMMAR](GRAMMAR.txt)
 
 # BitsySpec
 

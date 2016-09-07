@@ -52,7 +52,7 @@ The BitsySwift repository has some
 
 While the hope of this repo is to codify the definition of Bitsy in a series of
 runnable tests, it is also useful to define the language informally using words
-and examples.
+and examples. For a formal definition of the Bitsy grammar, see [GRAMMAR.txt](GRAMMAR.txt)
 
 ### Program Definition
 
