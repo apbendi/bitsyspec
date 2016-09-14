@@ -27,12 +27,11 @@ implementation, even enabling a test driven approach if desired.
 
 This version of BitsySpec has been tested with:
 
- * OS X 10.11 (El Capitan)
- * Xcode 7.3.1
- * Swift 2.2
+ * OS X/macOS 10.11 (El Capitan) or later
+ * Xcode 8.0
+ * Swift 2.3
 
-Xcode 8, macOS Sierra, and Swift 3 support is forthcoming. Linux
-support is currently limited by
+Swift 3 support is forthcoming. Linux support is currently limited by
 [Swift Foundation](https://github.com/apple/swift-corelibs-foundation) but
 should come eventually.
 
