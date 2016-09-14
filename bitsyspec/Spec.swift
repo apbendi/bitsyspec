@@ -57,27 +57,27 @@ private extension Spec {
                 return nil
             }
 
-            index = <#T##Collection corresponding to `index`##Collection#>.index(after: index)
+            index = code.index(after: index)
         }
 
         var description = ""
 
         while code[index] != "\"" {
             description += String(code[index])
-            index = <#T##Collection corresponding to `index`##Collection#>.index(after: index)
+            index = code.index(after: index)
         }
 
-        index = <#T##Collection corresponding to `index`##Collection#>.index(after: index)
+        index = code.index(after: index)
         guard code[index] == "\n" else {
             return nil
         }
-        index = <#T##Collection corresponding to `index`##Collection#>.index(after: index)
+        index = code.index(after: index)
 
         var expected = ""
 
         while code[index] != "}" {
             expected += String(code[index])
-            index = <#T##Collection corresponding to `index`##Collection#>.index(after: index)
+            index = code.index(after: index)
         }
         
         return (description, expected)
@@ -107,7 +107,7 @@ private extension String {
                 new += String(self[index])
             }
 
-            index = <#T##Collection corresponding to `index`##Collection#>.index(after: index)
+            index = self.index(after: index)
         }
 
         return new
