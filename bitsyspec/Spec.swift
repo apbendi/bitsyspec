@@ -8,7 +8,7 @@ private enum SpecData {
 }
 
 struct Spec {
-    private let metadata: SpecData
+    fileprivate let metadata: SpecData
 
     init(filePath: String) {
         guard filePath.isValidBitsyPath else {
@@ -57,27 +57,27 @@ private extension Spec {
                 return nil
             }
 
-            index = index.successor()
+            index = <#T##Collection corresponding to `index`##Collection#>.index(after: index)
         }
 
         var description = ""
 
         while code[index] != "\"" {
             description += String(code[index])
-            index = index.successor()
+            index = <#T##Collection corresponding to `index`##Collection#>.index(after: index)
         }
 
-        index = index.successor()
+        index = <#T##Collection corresponding to `index`##Collection#>.index(after: index)
         guard code[index] == "\n" else {
             return nil
         }
-        index = index.successor()
+        index = <#T##Collection corresponding to `index`##Collection#>.index(after: index)
 
         var expected = ""
 
         while code[index] != "}" {
             expected += String(code[index])
-            index = index.successor()
+            index = <#T##Collection corresponding to `index`##Collection#>.index(after: index)
         }
         
         return (description, expected)
@@ -86,8 +86,8 @@ private extension Spec {
 
 extension String {
     var isValidBitsyPath: Bool {
-        guard let regExp = try? NSRegularExpression(pattern: "^.+\\.bitsy$", options: .CaseInsensitive),
-            _ = regExp.firstMatchInString(self, options: [], range: NSMakeRange(0, characters.count)) else {
+        guard let regExp = try? NSRegularExpression(pattern: "^.+\\.bitsy$", options: .caseInsensitive),
+            let _ = regExp.firstMatch(in: self, options: [], range: NSMakeRange(0, characters.count)) else {
                 return false
         }
 
@@ -96,7 +96,7 @@ extension String {
 }
 
 private extension String {
-    func replacing(char: Character, with replacement: String) -> String {
+    func replacing(_ char: Character, with replacement: String) -> String {
         var index = self.startIndex
         var new = ""
 
@@ -107,7 +107,7 @@ private extension String {
                 new += String(self[index])
             }
 
-            index = index.successor()
+            index = <#T##Collection corresponding to `index`##Collection#>.index(after: index)
         }
 
         return new
@@ -115,5 +115,5 @@ private extension String {
 }
 
 private func contents(ofFile filePath: String) -> String? {
-    return try? NSString(contentsOfFile: filePath, encoding: NSUTF8StringEncoding) as String
+    return try? NSString(contentsOfFile: filePath, encoding: String.Encoding.utf8.rawValue) as String
 }

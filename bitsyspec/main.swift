@@ -24,15 +24,15 @@ func process(arguments args:[String]) -> (bitsyBin: String, specPath: String) {
     return (args[1], args[2])
 }
 
-@noreturn
-func usage() {
+
+func usage() -> Never  {
     print("usage: bitsyspec bitsy_path spec_path")
     print("       run spec(s) at spec_path using bitsy implementation at bitsy_path")
     exit(EX_USAGE)
 }
 
-func directory(atPath path:String) -> NSDirectoryEnumerator? {
-    return NSFileManager.defaultManager().enumeratorAtPath(path)
+func directory(atPath path:String) -> FileManager.DirectoryEnumerator? {
+    return FileManager.default.enumerator(atPath: path)
 }
 
 func specs(atPath path:String) -> [Spec] {
@@ -51,7 +51,7 @@ func specs(inDirectory dirPath:String) -> [Spec] {
     }
 
     return directory.flatMap { element in
-        guard let fileName = element as? String where fileName.isValidBitsyPath else {
+        guard let fileName = element as? String , fileName.isValidBitsyPath else {
             return nil
         }
 
@@ -60,4 +60,4 @@ func specs(inDirectory dirPath:String) -> [Spec] {
     }
 }
 
-main(arguments: Process.arguments)
+main(arguments: CommandLine.arguments)
