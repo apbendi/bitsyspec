@@ -87,7 +87,7 @@ private extension Spec {
 extension String {
     var isValidBitsyPath: Bool {
         guard let regExp = try? NSRegularExpression(pattern: "^.+\\.bitsy$", options: .caseInsensitive),
-            let _ = regExp.firstMatch(in: self, options: [], range: NSMakeRange(0, characters.count)) else {
+            let _ = regExp.firstMatch(in: self, options: [], range: NSMakeRange(0, self.count)) else {
                 return false
         }
 
