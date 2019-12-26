@@ -50,7 +50,7 @@ func specs(inDirectory dirPath:String) -> [Spec] {
         exit(EX_DATAERR)
     }
 
-    return directory.flatMap { element in
+    return directory.compactMap { element in
         guard let fileName = element as? String , fileName.isValidBitsyPath else {
             return nil
         }

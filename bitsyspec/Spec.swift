@@ -26,7 +26,7 @@ struct Spec {
             return
         }
 
-        metadata = .valid(path: filePath, description: description, expected: expected)
+        metadata = .valid((path: filePath, description: description, expected: expected))
     }
 
     func run(withBitsy bitsyBin: String) -> String {
