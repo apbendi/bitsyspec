@@ -25,24 +25,22 @@ implementation, even enabling a test driven approach if desired.
 
 ## Requirements
 
-This version of BitsySpec has been tested with:
+This version of BitsySpec has been tested with
 
- * OS X/macOS 10.14 (Mojave) or later
- * Xcode 11.3
- * Swift 5.0
+ * macOS 12.3 (Monterey) and Ubuntu 20.04 LTS
+ * Xcode 13.3
+ * Swift 5.6
 
-Linux support is currently limited by
-[Swift Foundation](https://github.com/apple/swift-corelibs-foundation) but
-should come eventually.
+although basically only a Swift toolchain is required to build the project. Thus,
+it may also run perfectly fine on Windows.
 
 Swift is an implementation detail of BitsySpec. Your compiler or interpreter
-can be in virtually any language.
+can be implemented in virtually any language.
 
 ## Installation
 
-To 'install' BitsySpec, simply clone and build the repository. You must have
-[Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
-and the `xcodebuild` utility installed.
+To 'install' BitsySpec, simply clone and build the repository. You must have the
+[Swift compiler](https://swift.org/download/#releases) available in your `PATH`:
 
 ```bash
 git clone https://github.com/apbendi/bitsyspec.git
