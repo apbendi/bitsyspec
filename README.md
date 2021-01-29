@@ -166,6 +166,7 @@ If you're attending either, be sure to say hello!
 * [BitsySwift](https://github.com/apbendi/bitsy-swift) - A Bitsy compiler written in Swift; the first-and-canonical implementation of Bitsy.
 * [Bitsy.NET](https://github.com/wessupermare/Bitsy.NET) - Bitsy implementations in C# and Visual Basic.
 * [xbitsy](https://github.com/apbendi/xbitsy) - A Bitsy interpreter written in Elixir.
+* [BitsyLLVM](https://github.com/SimplyDanny/bitsy-llvm) - A Bitsy compiler based on the [LLVM](https://llvm.org) compiler infrastructure.
 
 Open a pull request to add your implementation to the list!
 
