@@ -33,7 +33,7 @@ struct Spec {
         switch metadata {
         case .warning(let message):
             return "⚠️  \(message)"
-        case .valid(let path, let description, let expected):
+        case .valid((let path, let description, let expected)):
             let output = Shell.exec(cmd: "\(bitsyBin) \(path)")
 
             if output != expected {

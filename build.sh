@@ -1,12 +1,13 @@
 #!/bin/sh
 
-BUILDCMD=xcodebuild
+BUILDPATH="$(swift build --show-bin-path)"
+BINNAME="bitsyspec"
 BINDIR=bin
 
-$BUILDCMD
+swift build
 
 if [ ! -d "$BINDIR" ]; then
   mkdir "$BINDIR"
 fi
 
-cp build/Release/bitsyspec "$BINDIR/"
+cp "$BUILDPATH/$BINNAME" "$BINDIR/"
